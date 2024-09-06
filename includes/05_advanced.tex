@@ -1,0 +1,111 @@
+\section{进阶}
+
+\begin{frame}[fragile]{\LaTeX{} 的更多用途}
+  \begin{itemize}
+    \item 毕竟论文又不是天天写，对吧……
+          \pause
+    \item 幻灯片
+          \begin{itemize}
+            \item |beamer| 文档类提供了幻灯片功能（中文用 |ctexbeamer|）
+            \item 每个 |frame| 环境生成一个幻灯片页面
+            \item |\pause| 命令可以让内容一条一条出现
+          \end{itemize}
+          \pause
+    \item 简历
+          \begin{itemize}
+            \item 排版出整洁优雅的简历
+            \item 网上可以找到各种简历模板，例如：\link{https://github.com/billryan/resume/tree/zh_CN}
+          \end{itemize}
+          \pause
+    \item 笔记
+          \begin{itemize}
+            \item 特别是笔记中需要很多数学公式时
+            \item Markdown 笔记软件通常兼容 \LaTeX{} 的公式格式
+            \item 利用 |markdown| 宏包，你甚至可以在 \LaTeX{} 里写 Markdown
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX{} 系统学习}
+  \begin{itemize}
+    \item 经典文档
+          \begin{itemize}
+            \item 仔细阅读《一份不太简短的 \LaTeXe{} 介绍》
+                  \link{https://mirrors.tuna.tsinghua.edu.cn/CTAN/info/lshort/chinese/lshort-zh-cn.pdf}
+            \item 粗略阅读《\LaTeXe{} 插图指南》
+                  \link{https://github.com/WenboSheng/epslatex-cn/blob/master/epslatex-cn.pdf}
+          \end{itemize}
+    \item 包太雷（黄新刚）\textit{\LaTeX{} Notes}
+          \link{https://github.com/huangxg/lnotes/blob/master/lnotes2.pdf}
+    \item 刘海洋《\LaTeX{} 入门》
+          % \item Stefan Kottwitz \textit{LaTeX Cookbook}
+    \item 维基教科书：英文 \link{https://en.wikibooks.org/wiki/LaTeX}、中文 \link{https://zh.wikibooks.org/wiki/LaTeX}
+    \item 在线教程：Overleaf 帮助文档
+          \link{https://www.overleaf.com/learn}
+          % \item 仔细阅读《\hithesis 用户手册》~(20 分钟)
+          % \item 从~\hithesis 示例文档入手
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{一点人生的经验}
+  \begin{itemize}
+    \item 不要着急安装，先在 Overleaf 或 TeXPage 上熟悉各类操作
+    \item 先找个不重要的机会练练手，以免在重要任务中手忙脚乱
+    \item 实验室祖传的安装包多半是过时的、\hithesis 八成是旧版的
+    \item 写一点儿，编译一次，方便发现和定位错误
+    \item 推荐使用 Git 等工具进行版本管理
+    \item Windows 系统编译较慢，GNU/Linux 和 macOS 会快很多
+    \item \alert{工具是为人服务的，怎么顺手怎么来}（前提是确保用法无误）
+    \item \alert{格式是为内容服务的，不要舍本逐末}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{解决问题之道}
+  \begin{enumerate}
+    \item 阅读文档
+          \begin{itemize}
+            \item 使用 |texdoc| 命令即可打开宏包文档
+            \item \CJKsout{好吧实际上大多数人都懒得读文档}
+          \end{itemize}
+    \item 搜索网络
+          \begin{itemize}
+            \item 优先用英文搜索，有网络条件的请使用谷歌，不行用必应
+            \item 用中文百度也可以，但不要过于相信那些社区博客
+          \end{itemize}
+    \item 提问
+          \begin{itemize}
+            \item 论坛
+                  \begin{itemize}
+                    \item \TeX{} - \LaTeX{} Stack Exchange \link{https://tex.stackexchange.com}
+                    \item \CTeX{} 临时论坛 \link{https://github.com/CTeX-org/forum}
+                    \item \LaTeX{} 工作室 \link{https://www.latexstudio.net}（资源需要甄别，且部分内容需付费）
+                  \end{itemize}
+            \item 群聊
+                  \begin{itemize}
+                    \item \hithesis 讨论群：851792460
+                  \end{itemize}
+            \item 请提供\alert{最小工作示例（MWE，minimal working example）}
+          \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{社区参与}
+  \begin{itemize}
+    \item 参与讨论
+          \begin{itemize}
+            \item 你的经验也可以解他人之忧
+          \end{itemize}
+    \item 文档翻译
+          \begin{itemize}
+            \item \pkg{lshort-zh-cn} \link{https://github.com/CTeX-org/lshort-zh-cn}
+            \item \pkg{learnlatex.org/zh} \link{https://github.com/CTeX-org/learnlatex.github.io}
+          \end{itemize}
+    \item 宏包开发与维护
+          \begin{itemize}
+            \item 不妨先从修 typo 开始
+            \item 欢迎参与维护 \hithesis
+          \end{itemize}
+    \item \CJKsout{来当主讲人}
+  \end{itemize}
+\end{frame}

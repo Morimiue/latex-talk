@@ -1,0 +1,157 @@
+\section{公式}
+
+\subsection{数学模式}
+
+\begin{frame}[fragile]{数学模式}
+  \begin{itemize}
+    \item 一切公式都要在\textbf{数学模式}下输入
+          \begin{itemize}
+            \item 提供了公式排版所需的命令和特性
+            \item 数学模式的字体设置独立于文本模式
+            \item 间距根据符号类型自动调整，空格会被忽略，空行会报错
+          \end{itemize}
+    \item \textbf{行内公式}
+          \begin{itemize}
+            \item 公式与文字混排
+            \item 用一对美元符号包裹：|$...$|
+            \item 示例：理想气体状态方程可以写为 $PV=nRT$, 其中 $P$、$V$ 和 $T$ 分别是压强、体积和绝对温度
+          \end{itemize}
+    \item \textbf{行间公式}
+          \begin{itemize}
+            \item 公式单独成行
+            \item 无编号：|\[...\]| 或 |equation*| 环境
+            \item 带编号：|equation| 环境
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{公式排版}
+
+\begin{frame}[fragile]{结构}
+  \begin{itemize}
+    \item 上标：|^{上标}|
+    \item 下标：|_{下标}|
+    \item 分式：|\frac{分子}{分母}|
+    \item 根式：|\sqrt[根指数]{根底数}|
+  \end{itemize}
+
+  \begin{exampleblock}{示例}
+    \begin{columns}
+      \begin{column}{0.7\textwidth}
+        \begin{texcode}[gobble=10, emph={[1]enumerate,itemize}]
+          % gather 是一个常用的多行公式环境
+          \begin{gather*}
+            (\sqrt[n]{a})^{n}=a \\
+            \log_{a}b=\frac{\log_{c}b}{\log_{c}a}
+          \end{gather*}
+        \end{texcode}
+      \end{column}
+
+      \begin{column}{0.25\textwidth}
+        \vspace*{-2em}
+        \begin{gather*}
+          (\sqrt[n]{a})^{n}=a \\
+          \log_{a}b=\frac{\log_{c}b}{\log_{c}a}
+        \end{gather*}
+      \end{column}
+    \end{columns}
+  \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[fragile]{括号（定界符）}
+  \begin{itemize}
+    \item 基本括号
+          \begin{itemize}
+            \item |(...)|、|[...]|、|\{...\}|
+            \item 绝对值、范数：|...| 或 |\vert...\vert|、|\Vert...\Vert|
+            \item 尖括号：|<...>| 或 |\langle...\rangle|
+          \end{itemize}
+    \item 自动调节大小
+          \begin{itemize}
+            \item |\left(...\right)| 等
+            \item 自动匹配内部公式的尺寸
+          \end{itemize}
+    \item 手动调节大小
+          \begin{itemize}
+            \item 只有 4 + 1 档：|\big|、|\Big|、|\bigg|、|\Bigg|
+            \item 声明左中右：|\bigl|、|\bigm|、|\bigr| 等
+            \item 示例：$\Biggl( \biggl( \Bigl( \bigl( () \bigr) \Bigr) \biggr) \Biggr)$
+          \end{itemize}
+  \end{itemize}
+
+  \note{
+    \begin{itemize}
+      \item 尽管手动调节时只有几个尺寸可选，但自动调节时大部分定界符都可以无限延伸，实现原理是用多个“零件”拼接起来
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{数学符号}
+  \begin{itemize}
+    \item 寻找符号
+          \begin{itemize}
+            \item 最常用的额外字体包：\pkg{amssymb}
+            \item 常用符号表：各种入门教程和编辑器通常都会给出
+            \item 更多符号表：\textit{The Comprehensive \LaTeX{} Symbol List}
+                  \link{https://ctan.org/pkg/comprehensive}
+            \item 手写识别（有趣但不全）：Detexify \link{http://detexify.kirelabs.org}
+          \end{itemize}
+    \item 数学字体
+          \begin{itemize}
+            \item Times New Roman 字体：\pkg{newtxmath} 宏包
+                  % \item \alert{不要用 \pkg{times} 和 \pkg{mathptmx} 宏包}
+                  % \item 加粗：使用 \pkg{bm} 宏包的 |\bm| 命令（|\mathbf| 只有直立的字母）
+          \end{itemize}
+  \end{itemize}
+  \vspace{-1em}
+  \begin{block}{扩展}
+    \begin{itemize}
+      \item 新方案：\pkg{unicode-math}
+            \link{https://stone-zeng.github.io/2020-05-02-use-opentype-fonts-iii}
+            \begin{itemize}
+              \item 符号、字体、样式精调的一揽子解决方案
+              \item 彻底修改底层，不可与传统方案混用
+            \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% \begin{frame}[fragile]{结构}
+%   \begin{itemize}
+%     \item 上下标
+%           \begin{itemize}
+%             \item |^| 和 |_|：|f^ab| 和 |f^{ab}|，|e^x^2|、|{e^x}^2| 和 |e^{x^2}|
+%           \end{itemize}
+%     \item 分式
+%           \begin{itemize}
+%             \item |\frac{<分子>}{<分母>}|
+%           \end{itemize}
+%     \item 根式
+%           \begin{itemize}
+%             \item |\sqrt[<次数>]{<内容>}|
+%             \item 复杂情况改用分数指数：|{...}^{1/n}|
+%           \end{itemize}
+%     \item 矩阵与行列式
+%           \begin{itemize}
+%             \item |matrix|、|pmatrix|、|vmatrix| 等环境
+%             \item 语法类似表格：|&| 分列，|\\| 换行
+%             \item 推荐 \pkg{physics} 宏包
+%           \end{itemize}
+%   \end{itemize}
+% \end{frame}
+
+\begin{frame}[fragile]{公式排版技巧}
+  \begin{itemize}
+    \item 建议始终调用 \pkg{amsmath} 宏包
+    \item \lstinline[style=style@inline]|\(no)limits| 命令可以调整积分、求和、极限等元素（|\int|、|\sum|、|\lim|）的显示方式
+          \begin{itemize}
+            \item $\sum\limits_{i=0}^n {x_i}$ 对比 $\sum\nolimits_{i=0}^n {x_i}$
+          \end{itemize}
+    \item 小分式、行内分式不好看：改用 |a/b|、或改用行间公式
+    \item 手动调节括号大小往往比自动调节更好看
+    \item \alert{不建议用 MathType 生成 \LaTeX{} 公式}
+    \item \alert{不要用 \texttt{\$\$...\$\$}}
+          % \item \alert{不推荐 \texttt{\textbackslash dfrac}}
+  \end{itemize}
+\end{frame}

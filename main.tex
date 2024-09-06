@@ -1,0 +1,148 @@
+\documentclass[fontset=ubuntu]{ctexbeamer}
+
+\usepackage{%
+  bookmark,
+  booktabs,
+  datetime2
+}
+
+\usepackage{fontawesome5}
+\usepackage{hologo}
+\usepackage{qrcode}
+
+\usepackage{%
+  listings,
+  ragged2e
+}
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}{./showcase/}}
+
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\usepackage{libertinus}
+
+\setlength\abovecaptionskip{-5pt}
+\setlength\belowcaptionskip{-5pt}
+
+\usepackage{tipa}
+\usepackage{xpinyin}
+
+\usepackage{dirtree}
+
+\usepackage{xeCJKfntef}
+
+\usepackage{gbt7714}
+\bibliographystyle{gbt7714-numerical}
+
+\usetheme{Xiaoshan}
+\usefonttheme{serif,professionalfonts}
+
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+
+\setbeamertemplate{title}{%
+\raggedleft%
+\linespread{1.0}%
+\inserttitle%
+\hspace*{0.75cm}\par%
+\vspace*{0.25cm}
+}
+
+\setbeamertemplate{subtitle}{%
+\raggedleft%
+\insertsubtitle%
+\hspace*{0.75cm}\par%
+\vspace*{0.25cm}
+}
+
+\setbeamertemplate{frame numbering}{\zhnumber[style=Ancient]{\insertframenumber}}
+\setbeamertemplate{note page}[plain]
+
+% \setbeameroption{show only notes}
+% \setbeameroption{show notes on second screen}
+
+\setbeamercolor{block title}{fg=松花绿}
+\setbeamersize{description width=2em}
+
+\setCJKmainfont{Noto Serif CJK SC}[
+  UprightFont    = * SemiBold,
+  BoldFont       = * Black,
+  ItalicFont     = * SemiBold,
+  BoldItalicFont = * Black,
+  CharacterWidth = Full]
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans CJK SC}
+
+\newcommand{\link}[1]{\href{#1}{\tiny \faLink}}
+\newcommand{\pkg}[1]{\texttt{#1}}
+
+\newcommand{\dd}{\symrm{d}}
+\newcommand{\V}[1]{\symbf{#1}}
+
+\newcommand{\XeTeX}{\hologo{XeTeX}}
+\newcommand{\pdfTeX}{\hologo{pdfTeX}}
+\newcommand{\LuaTeX}{\hologo{LuaTeX}}
+\newcommand{\XeLaTeX}{\hologo{Xe}\kern-.13em\LaTeX{}}
+\newcommand{\pdfLaTeX}{pdf\LaTeX{}}
+\newcommand{\LuaLaTeX}{Lua\LaTeX{}}
+\newcommand{\BibTeX}{\hologo{BibTeX}}
+\newcommand{\hithesis}{\textsc{hi}\-\textsc{Thesis}}
+
+% 颜色
+\colorlet{keyword}{松花绿}
+\colorlet{comment}{漆黑!50}
+\colorlet{texcs}{酡红}
+\colorlet{emph1}{靛蓝}
+\colorlet{emph2}{琥珀}
+\colorlet{inline}{玄色}
+
+% 代码清单
+\lstdefinestyle{style@latex}{
+  language     = [latex]TeX,
+  alsoletter   = {*},
+  keywordstyle = \bfseries\color{keyword},
+  commentstyle = \color{comment},
+  texcsstyle   = *\color{texcs},
+  emphstyle    = [1]\color{emph1},
+  emphstyle    = [2]\color{emph2}
+}
+\lstdefinestyle{style@inline}{
+  basicstyle   = \ttfamily\color{inline},
+  keepspaces   = true
+}
+\lstnewenvironment{texcode}[1][]{\lstset{
+  style        = style@latex,
+  basicstyle   = \footnotesize\ttfamily,
+  gobble       = 2,
+  backgroundcolor=\color{white},
+  morekeywords = {\documentclass,\usepackage,\begin,\end},#1
+  }
+}{}
+\lstMakeShortInline[style=style@inline]|
+
+\title{\LaTeX{} 论文排版技术入门}
+\subtitle{What You Think Is What You Get}
+
+\author{石佳乐}
+\institute{哈尔滨工业大学（威海）}
+% \institute{\normalsize
+% 1. \LaTeX{} 发展历史与特点\\
+% 2. 快速上手不废话（通过示例讲解常用功能）\\
+% 3. 论文模板的使用（以哈工大学位论文为例）\\
+% 4. 穿插讲解扩展性知识以及使用技巧}
+% \date{\zhtoday}
+\date{2022 年 6 月 2 日}
+
+\begin{document}
+
+\maketitle
+
+\include{./includes/01_introduction.tex}
+\include{./includes/02_basics.tex}
+\include{./includes/03_math.tex}
+\include{./includes/04_papers.tex}
+\include{./includes/05_advanced.tex}
+\include{./includes/99_about.tex}
+
+\end{document}

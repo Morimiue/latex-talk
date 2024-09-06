@@ -1,0 +1,637 @@
+\section{快速上手}
+
+\subsection{凡例}
+
+\begin{frame}{凡例}
+  术语的第一次出现通常会使用\textbf{粗体}。
+  网页链接用\ {\tiny \faLink} 符号表示。
+
+  \begin{block}{扩展}
+    这里是扩展性的内容，一般不会影响使用，但能了解是最好的。
+  \end{block}
+
+  \begin{alertblock}{注意}
+    这里是需要注意的内容，与排版中可能出现的问题相关。
+  \end{alertblock}
+
+  \begin{exampleblock}{示例}
+    这里是示例，通常以代码加效果的形式出现。
+  \end{exampleblock}
+\end{frame}
+
+\subsection{安装指南 \& 不安装指南}
+
+\begin{frame}[fragile]{安装指南}
+  \begin{enumerate}
+    \item 下载：推荐下载\TeX{} Live 的 ISO 镜像离线安装
+          \begin{itemize}
+            \item 清华大学开源软件镜像站 \link{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso}
+            \item 中国科学技术大学开源软件镜像站 \link{https://iso.mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive.iso}
+            \item 或者其他镜像站
+          \end{itemize}
+    \item 安装：建议新手安装完整版
+          \begin{itemize}
+            \item 以管理员权限运行 |install-tl-windows.bat|
+            \item 一路点击“下一步”
+            \item 保持耐心
+          \end{itemize}
+    \item 编辑器：再安装一个合适的编辑器
+          \begin{itemize}
+            \item 专用型：TeXworks、TeXstudio、TeXShop、Kile……
+            \item 通用型：Visual Studio Code、Vim、Emacs……
+          \end{itemize}
+  \end{enumerate}
+  更详细的安装教程：\link{https://mirrors.tuna.tsinghua.edu.cn/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf}
+
+  \note{
+    \begin{itemize}
+      \item 有很多人推荐其他的 \LaTeX{} 发行版，TeX Live 的确有种种缺点：
+            \begin{itemize}
+              \item 默认占用空间太大，会安装一堆你可能永远用不到的内容
+              \item 对宏包的管理不够方便
+              \item Windows 下 TeX Live 版本升级不方便
+              \item ……
+            \end{itemize}
+      \item 但我为新手只推荐 TeX Live 完整版，主要是因为：
+            \begin{itemize}
+              \item 包含所有常用的宏包、文档、字体等，避免后续的麻烦
+              \item 用户基数大，这意味着当你遇到问题时，可以更快地找到解决方案
+            \end{itemize}
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}{不安装指南}
+  \begin{itemize}
+    \item 懒得安装？没关系！
+    \item 已经 2202 年了，云端服务可能更好用
+    \item 免去安装、配置、升级等一系列烦恼，可以多人协作
+    \item 国际平台：Overleaf \link{https://cn.overleaf.com/}
+          \begin{itemize}
+            \item 老牌服务，成熟稳定，模板丰富
+            \item 缺少部分中文字体（例如 Windows 自带的中易系列字体）
+          \end{itemize}
+    \item 国内平台：TeXPage \link{https://www.texpage.com}
+          \begin{itemize}
+            \item 默认支持更多的中文字体
+            \item 自带免费的数学符号选择器
+            \item 不够成熟，收录的模板也较少
+          \end{itemize}
+  \end{itemize}
+
+  \note{
+    \begin{itemize}
+      \item 推荐先使用在线环境体验 \LaTeX{}
+    \end{itemize}
+  }
+\end{frame}
+
+\subsection{基本使用方法}
+
+\begin{frame}[fragile]{简单的英文文档}
+  \begin{exampleblock}{示例}
+    \begin{texcode}[gobble=6,basicstyle=\small\ttfamily,emph={[1]document}, emph={[2]article}]
+      % 用 pdfLaTeX、XeLaTeX 或 LuaLaTeX 编译
+      \documentclass{article}
+
+      \begin{document}
+        Hello World!
+      \end{document}
+    \end{texcode}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 文档的组成部分}
+  \begin{enumerate}
+    \item 导言区
+          \begin{itemize}
+            \item 以 |\documentclass{文档类名}| 开头
+            \item \textbf{文档类}定义了这个文档的基本格式
+            \item 在导言区，你还可以：
+                  \begin{itemize}
+                    \item 加载宏包，这样就能在正文中使用更多功能
+                    \item 调整格式，因为文档类不一定满足你的需求
+                  \end{itemize}
+            \item \alert{导言区绝不能出现正文，否则会报错}
+          \end{itemize}
+    \item 正文区
+          \begin{itemize}
+            \item 以 |\begin{document}| 开头
+                    \item 以 |\end{document}| 结尾
+            \item 所有正文内容都要放在这里
+            \item 原则上来说，正文区只负责内容，不要在此调整格式
+          \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{简单的中文文档}
+  \begin{exampleblock}{示例}
+    \begin{texcode}[gobble=6,basicstyle=\small\ttfamily,emph={[1]document}, emph={[2]ctexart}]
+      % 用 XeLaTeX 或 LuaLaTeX 编译
+      \documentclass{ctexart}
+
+      \begin{document}
+        你好，世界！
+      \end{document}
+    \end{texcode}
+  \end{exampleblock}
+
+  \begin{alertblock}{注意}
+    \begin{itemize}
+      \item 确保文件编码是 UTF-8
+      \item 务必使用 |ctexart| 等中文文档类
+    \end{itemize}
+  \end{alertblock}
+
+  \note{
+    \begin{itemize}
+      \item 编写中文文档与英文文档的区别：
+            \begin{itemize}
+              \item 必须使用 \CTeX{} 宏集提供的中文文档类：ctexart、ctexrep、ctexbook 和 ctexbeamer
+              \item 加载 xeCJK 等宏包也可以达到效果，但不推荐
+              \item 千万不要用一个叫做 \CTeX{} 套装的东西，那玩意儿太古老了
+              \item 必须用 \XeLaTeX 等引擎编译
+            \end{itemize}
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{基本语法}
+  \begin{description}
+    \item[注释] 以 |%| 开头，其后所有内容都会被忽略
+    \item[命令] 以 |\| 开头，区分大小写，可以提供内容或格式
+      \begin{itemize}
+        \item |\foo|：有些命令可以不带参数直接使用
+        \item |\foo{arg}|：必需参数放在大括号 |{...}| 内
+        \item |\foo[bar]{arg}|：可选参数放在中括号 |[...]| 内
+      \end{itemize}
+    \item[环境] 为一整块内容提供特定的格式
+      \begin{texcode}[gobble=8, emph={[1]env}]
+        \begin{env}
+          ...
+        \end{env}
+      \end{texcode}
+  \end{description}
+  \vspace{-1em}
+  \begin{alertblock}{注意}
+    \begin{itemize}
+      \item 有些符号在 \LaTeX{} 中有特殊的作用，因此不能直接输入\\
+            需要\textbf{转义}：如用 |\%| 表示 |%|、|\textbackslash| 表示 |\| 等
+      \item 连续多个空格 = 单个空格、单个换行符 = 单个空格
+            % \item 命令和环境都可以自行定义或修改，但要小心行事
+    \end{itemize}
+  \end{alertblock}
+
+  \note{
+    \begin{itemize}
+      \item 一个命令可能既有必需参数，也有可选参数
+      \item 有多个参数时，参数的位置是固定的，不能随便放
+            % \item 例如，如果一个命令格式是 |\foo[bar]{arg}|，就绝对不能写成 |\foo{arg}[bar]|
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{谋篇布局}
+  \begin{itemize}
+    \item 文档部件
+          \begin{itemize}
+            \item 标题：|\title|、|\author|、|\date| $\rightarrow$ |\maketitle|
+            \item 目录：|\tableofcontents|
+            \item 章节：|\chapter|、|\section|、|\subsection| 等
+            \item 文献：|\bibliography|
+          \end{itemize}
+    \item 文档划分
+          \begin{itemize}
+            \item 凤头猪肚豹尾：|\frontmatter|、|\mainmatter|、|\backmatter|
+            \item 分文件编译：|\include|、|\input|
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{文本标记}
+  \begin{itemize}
+    \item 字体相关
+          \begin{itemize}
+            \item 字号：|\tiny|、|\small|、|\large|、|\Large| 等
+            \item 加粗：|{\bfseries ...}| 或 |\textbf{...}|
+            \item 倾斜：|{\itshape ...}| 或 |\textit{...}|
+          \end{itemize}
+    \item 段落相关
+          \begin{itemize}
+            \item 换行：|\\|
+            \item 换段：空行或 |\par|
+            \item 换页：|\newpage|
+                  % \item 缩进：|\indent|
+            \item 居中：|\centering| 或 |center| 环境
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{一个更完善的文档}
+  \vspace{-1em}
+  \begin{exampleblock}{示例}
+    \begin{texcode}[gobble=6,basicstyle=\small\ttfamily,emph={[1]document}, emph={[2]ctexart}]
+      \documentclass{ctexart}
+
+      \title{这是文章标题}
+      \author{这是作者}
+      \date{这是日期}
+
+      \begin{document}
+        % 在导言区定义标题内容后，在正文区生成标题
+        \maketitle
+        \section{这是第一节的标题}
+        你好，世界！
+
+        这是另一段。
+      \end{document}
+
+    \end{texcode}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{命令是如何起作用的？}
+  \begin{block}{扩展}
+    \begin{itemize}
+      \item 计算机编程中的\textbf{宏}
+            \begin{itemize}
+              \item 可以将一段内容替换为另一段内容，这一过程称为\textbf{宏展开}
+            \end{itemize}
+      \item \TeX{} 就是一种基于宏的系统
+            \begin{itemize}
+              \item \TeX{} 排版引擎只能解析有限的命令，它们称为\textbf{原始命令}
+              \item 其他命令都是宏，最终会被层层展开以供排版引擎处理
+              \item \LaTeX{} 提供了额外的宏，各种宏包、用户也可以自定义宏
+            \end{itemize}
+    \end{itemize}
+  \end{block}
+  \vspace{-1em}
+  \begin{exampleblock}{示例}
+    \begin{itemize}
+      \item 为什么 |\TeX| 命令能输出错落有致的排版效果（\TeX）？
+      \item 因为它会被展开成下面这一堆代码：\\
+            \footnotesize |T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX|
+    \end{itemize}
+  \end{exampleblock}
+
+  \note{
+    \begin{itemize}
+      \item 宏可以大大简化代码的编写
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{引擎与格式}
+  \vspace{-1em}
+  \begin{block}{扩展}
+    \begin{itemize}
+      \item \textbf{引擎}：\TeX{} 的实现，是幕后真正干活（排版）的程序
+            \begin{itemize}
+              \item \pdfTeX{}：直接生成 PDF，支持 micro-typography
+              \item \XeTeX{}：支持 Unicode、OpenType 与复杂文字编排（CTL）
+              \item \LuaTeX{}：支持 Unicode、OpenType，内联 Lua
+              \item (u)p\TeX{}：日本方面推动，生成 |.dvi|，（支持 Unicode）
+            \end{itemize}
+      \item \textbf{格式}：\TeX{} 的语言扩展（命令封装）
+            \begin{itemize}
+              \item plain \TeX{}：Knuth 同志专用
+              \item \LaTeX{}：排版科技类文章的事实标准
+              \item Con\TeX{t}：基于 \LuaTeX{} 实现，优雅、易用（吗？）
+            \end{itemize}
+      \item \textbf{发行版}：把引擎、格式、宏包、文档等各种东西打包到一起
+            \begin{itemize}
+              \item TeX Live：官方维护，跨平台，首选
+              \item MacTeX：约等于 macOS 下的 TeX Live
+              \item MiKTeX：个人维护，特点是宏包可以随装随用
+                    % \item \textbf{程序}：引擎 + dump 之后的格式代码
+                    %       \begin{itemize}
+                    %         \item \alert{英文文章：\pdfLaTeX{}、\XeLaTeX{} 或 \LuaLaTeX{}}
+                    %         \item \alert{中文文章：\XeLaTeX{} 或 \LuaLaTeX{}}
+                    %       \end{itemize}
+            \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{常用元素}
+
+\begin{frame}[fragile]{常用元素：列表}
+  \begin{exampleblock}{示例}
+    \begin{columns}
+      \begin{column}{0.45\textwidth}
+        \begin{texcode}[gobble=10, emph={[1]enumerate,itemize}]
+          \begin{enumerate}
+            \item 自由软件的定义
+              \begin{itemize}
+                \item 自由度〇
+                \item 自由度一
+                \item 自由度二
+                \item 自由度三
+              \end{itemize}
+            \item 自由和非自由的边界
+            \item 自由软件定义的实践
+          \end{enumerate}
+        \end{texcode}
+      \end{column}
+
+      \begin{column}{0.45\textwidth}
+        % \footnotesize
+        \begin{enumerate}
+          \item 自由软件的定义
+                \begin{itemize}
+                  \item 自由度〇
+                  \item 自由度一
+                  \item 自由度二
+                  \item 自由度三
+                \end{itemize}
+          \item 自由和非自由的边界
+          \item 自由软件定义的实践
+        \end{enumerate}
+      \end{column}
+    \end{columns}
+  \end{exampleblock}
+
+  \note{
+    \begin{itemize}
+      \item enumerate 环境提供有编号列表，itemize 环境提供无编号列表，description 环境提供描述性列表。
+      \item 在列表环境中，每个 \backslash item 命令就是一个条目
+      \item 各种列表环境之间可以相互嵌套，示例中就演示了 enumerate 和 itemize 环境的嵌套。
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{常用元素：图片（一）}
+  \begin{exampleblock}{示例}
+    \begin{columns}
+      \begin{column}{0.6\textwidth}
+        \begin{texcode}[gobble=10, moretexcs={\graphicspath,\includegraphics},emph={[1]figure}, emph={[2]graphicx}]
+          \usepackage{graphicx}
+
+          % 必需参数为文件名，后缀可省略
+          \includegraphics{figures/logo.png}
+        \end{texcode}
+      \end{column}
+
+      \begin{column}{0.35\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{logo.png}
+      \end{column}
+    \end{columns}
+  \end{exampleblock}
+
+  \begin{alertblock}{注意}
+    \begin{itemize}
+      \item 这是最简单的插入图片示例，但不能直接用在排版中。
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{浮动体}
+  \begin{itemize}
+    \item 上面的用法有什么问题？
+          \begin{itemize}
+            \item 将图片直接嵌入文本特定位置，可能严重影响排版效果
+            \item 没有标题，不符合论文排版要求
+            \item 没有编号，无法方便地进行引用
+          \end{itemize}
+    \item \textbf{浮动体}机制
+          \begin{itemize}
+            \item 可以自动将图片、表格等大块内容移动到合适的位置
+            \item 支持标题和自动编号等功能
+            \item \LaTeX{} 的 |figure| 和 |table| 环境都是浮动体
+            \item 浮动体环境的可选参数 |[htbp]| 可以进行位置控制
+          \end{itemize}
+    \item 浮动体的使用技巧
+          \begin{itemize}
+            \item 不要强求浮动体“乖乖待在插入的位置”
+                  \link{https://liam.page/2017/03/11/floats-in-LaTeX-basic}
+            \item 避免“下图”“上表”等表述，而要使用“图 1”“表 1”等
+            \item 建议写完全文之后统一调整
+          \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{交叉引用}
+  \begin{itemize}
+    \item \textbf{交叉引用}
+          \begin{itemize}
+            \item 被引处：使用 |\label| 定义标签
+                  \begin{itemize}
+                    \item 图表：紧跟在 |\caption| 命令之后
+                    \item 章节：紧跟在 |\section| 等章节命令之后
+                    \item 公式：任意位置
+                  \end{itemize}
+            \item 引用处：使用 |\ref|、|\eqref| 等引用标签，自动获取编号
+          \end{itemize}
+  \end{itemize}
+  \vspace{-1em}
+  \begin{alertblock}{注意}
+    \begin{itemize}
+      \item “我这里没有成功显示‘图 1’，而是‘图~?’，这是咋回事？”
+            \begin{itemize}
+              \item 因为文档引用了自身内容，一次编译无法获取某些信息
+              \item 需要多次编译
+                    \begin{itemize}
+                      \item 对于简单的交叉引用，通常编译两次即可
+                      \item 推荐用 \pkg{latexmk} 自动处理，各种在线环境也采用了此工具
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{常用元素：图片（二）}
+  \begin{exampleblock}{示例}
+    \begin{columns}
+      \begin{column}{0.6\textwidth}
+        \begin{texcode}[gobble=10, moretexcs={\graphicspath,\includegraphics},emph={[1]figure}, emph={[2]graphicx}]
+          % 加载图片宏包
+          \usepackage{graphicx}
+          % 可以统一指定图片路径
+          \graphicspath{{./figures/}}
+
+          如图~\ref{fig_logo} 所示。
+          \begin{figure}
+            \centering
+            % 必需参数为文件名，后缀可省略
+            % 可选参数可指定尺寸、裁剪等选项
+            \includegraphics[...]{logo.png}
+            \caption{\LaTeX{} 图标}
+            \label{fig_logo}
+          \end{figure}
+        \end{texcode}
+      \end{column}
+
+      \begin{column}{0.35\textwidth}
+        如图~\ref{fig_logo_} 所示。
+        \begin{figure}
+          \centering
+          \includegraphics[width=1.0\textwidth]{logo.png}
+          \caption{\LaTeX{} 图标}
+          \label{fig_logo_}  % Avoid duplicate labels warning
+        \end{figure}
+      \end{column}
+    \end{columns}
+  \end{exampleblock}
+
+  \note{
+    \begin{itemize}
+      \item 这一页幻灯片中涉及的点有很多：
+            \begin{itemize}
+              \item 加载宏包：宏包能提供更多的宏，方便文档编写，一个宏包通常是为一种特定的功能而设计的
+              \item 交叉引用
+              \item 浮动体
+            \end{itemize}
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{常用元素：图片（三）}
+  \begin{itemize}
+    \item 外部绘图工具
+          \begin{itemize}
+            \item Mathematica、MATLAB
+            \item PowerPoint、Visio、Adobe Illustrator、Inkscape、Figma 等
+            \item Python \texttt{Matplotlib}、\texttt{Plots.jl}、R、Plotly 等
+            \item draw.io \link{https://app.diagrams.net/}、
+                  Mathcha \link{https://www.mathcha.io}、
+                  ProcessOn \link{https://www.processon.com} 等网站
+          \end{itemize}
+    \item \TeX{} 内联
+          \begin{itemize}
+            \item Asymptote
+            \item \alert{\pkg{pgf}/\pkg{TikZ}、\pkg{pgfplots}}
+          \end{itemize}
+    \item 插图格式
+          \begin{itemize}
+            \item 矢量图：|.pdf|%（不再推荐 |.eps|）
+            \item 位图：|.png| 或 |.jpg|
+            \item 不（完全）支持 |.svg| 和 |.bmp|
+            \item \alert{尽量用矢量图}
+          \end{itemize}
+    \item 参考：\link{https://www.zhihu.com/question/21664179}
+          \link{https://tex.stackexchange.com/q/158668}
+          \link{https://tex.stackexchange.com/q/72930}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{常用元素：表格（一）}
+  \begin{exampleblock}{示例}
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \begin{texcode}[gobble=10,emph={[1]tabular}]
+          \begin{tabular}{cc}
+            标题 & 标题 \\
+            内容 & 内容 \\
+            ...
+            内容 & 内容 \\
+          \end{tabular}
+        \end{texcode}
+      \end{column}
+
+      \begin{column}{0.4\textwidth}
+        \scriptsize
+        \begin{tabular}{cc}
+          命令                 & 渲染结果             \\
+          |\&|               & \&               \\
+          |\%|               & \%               \\
+          |\$|               & \$               \\
+          |\#|               & \#               \\
+          |\_|               & \_               \\
+          |\{|               & \{               \\
+          |\}|               & \}               \\
+          |\textasciitilde|  & \textasciitilde  \\
+          |\textasciicircum| & \textasciicircum \\
+          |\textbackslash|   & \textbackslash   \\
+        \end{tabular}
+      \end{column}
+    \end{columns}
+  \end{exampleblock}
+
+  \begin{alertblock}{注意}
+    \begin{itemize}
+      \item 这是最简单的插入表格示例，但不能直接用在排版中。
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{常用元素：表格（二）}
+  \vspace{-1em}
+  \begin{exampleblock}{示例}
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \begin{texcode}[gobble=10,moretexcs={\toprule,\midrule,\bottomrule},emph={[1]table,tabular}, emph={[2]booktabs}]
+          % 绘制三线表的宏包
+          \usepackage{booktabs}
+
+          如表~\ref{tab_escape} 所示。
+          \begin{table}
+            \caption{\LaTeX{} 转义字符}
+            \label{tab_escape}
+            \begin{tabular}{cc}
+              \toprule
+              标题 & 标题 \\
+              \midrule
+              内容 & 内容 \\
+              \bottomrule
+            \end{tabular}
+          \end{table}
+        \end{texcode}
+      \end{column}
+
+      \begin{column}{0.4\textwidth}
+        \scriptsize
+        \LaTeX{} 常用转义字符如表~\ref{tab_escape_} 所示。
+        \scriptsize
+        \begin{table}
+          \caption{\LaTeX{} 转义字符}
+          \label{tab_escape_}
+          \begin{tabular}{cc}
+            \toprule
+            命令                 & 渲染结果             \\
+            \midrule
+            |\&|               & \&               \\
+            |\%|               & \%               \\
+            |\$|               & \$               \\
+            |\#|               & \#               \\
+            |\_|               & \_               \\
+            |\{|               & \{               \\
+            |\}|               & \}               \\
+            |\textasciitilde|  & \textasciitilde  \\
+            |\textasciicircum| & \textasciicircum \\
+            |\textbackslash|   & \textbackslash   \\
+            \bottomrule
+          \end{tabular}
+        \end{table}
+      \end{column}
+    \end{columns}
+  \end{exampleblock}
+
+  \note{
+    \begin{itemize}
+      \item booktabs 宏包定义了不同横线的命令，用于绘制三线表
+      \item 类似插入图片，注意本示例中对浮动体和交叉引用的使用
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{常用元素：表格（三）}
+  \begin{itemize}
+    \item |tabular| 环境配合相关宏包可以实现更多表格功能
+    \item 手动绘制表格确实比较令人头疼，且较难维护
+    \item 可以使用在线工具生成表格代码：Tables Generator \link{https://www.tablesgenerator.com/}
+  \end{itemize}
+  \begin{block}{扩展}
+    \begin{itemize}
+      \item 除了基本的 |tabular| 环境外，也有宏包提供其他表格环境
+      \item 特别推荐 \pkg{tabularray} 宏包
+            \begin{itemize}
+              \item 兼容性好
+              \item 功能强大，各种需求皆可轻松实现
+            \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
